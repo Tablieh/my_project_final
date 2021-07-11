@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -35,6 +37,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Avis::class, inversedBy="users")
+     */
+    private $donner;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Voiture::class, inversedBy="users")
+     */
+    private $listeFavoris;
+
+    public function __construct()
+    {
+        $this->listeFavoris = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -123,5 +145,53 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getDonner(): ?Avis
+    {
+        return $this->donner;
+    }
+
+    public function setDonner(?Avis $donner): self
+    {
+        $this->donner = $donner;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Voiture[]
+     */
+    public function getListeFavoris(): Collection
+    {
+        return $this->listeFavoris;
+    }
+
+    public function addListeFavori(Voiture $listeFavori): self
+    {
+        if (!$this->listeFavoris->contains($listeFavori)) {
+            $this->listeFavoris[] = $listeFavori;
+        }
+
+        return $this;
+    }
+
+    public function removeListeFavori(Voiture $listeFavori): self
+    {
+        $this->listeFavoris->removeElement($listeFavori);
+
+        return $this;
     }
 }

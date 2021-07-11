@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\VoitureRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -46,6 +48,27 @@ class Voiture
      * @ORM\Column(type="string", length=50)
      */
     private $motorisation;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="listeFavoris")
+     */
+    private $users;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Avis::class, inversedBy="voitures")
+     */
+    private $concerner;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Modele::class, mappedBy="voiture")
+     */
+    private $associer;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+        $this->associer = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +143,75 @@ class Voiture
     public function setMotorisation(string $motorisation): self
     {
         $this->motorisation = $motorisation;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addListeFavori($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeListeFavori($this);
+        }
+
+        return $this;
+    }
+
+    public function getConcerner(): ?Avis
+    {
+        return $this->concerner;
+    }
+
+    public function setConcerner(?Avis $concerner): self
+    {
+        $this->concerner = $concerner;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Modele[]
+     */
+    public function getAssocier(): Collection
+    {
+        return $this->associer;
+    }
+
+    public function addAssocier(Modele $associer): self
+    {
+        if (!$this->associer->contains($associer)) {
+            $this->associer[] = $associer;
+            $associer->setVoiture($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAssocier(Modele $associer): self
+    {
+        if ($this->associer->removeElement($associer)) {
+            // set the owning side to null (unless already changed)
+            if ($associer->getVoiture() === $this) {
+                $associer->setVoiture(null);
+            }
+        }
 
         return $this;
     }

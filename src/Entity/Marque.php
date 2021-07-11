@@ -27,6 +27,11 @@ class Marque
      */
     private $origine;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Modele::class, inversedBy="marques")
+     */
+    private $construire;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class Marque
     public function setOrigine(string $origine): self
     {
         $this->origine = $origine;
+
+        return $this;
+    }
+
+    public function getConstruire(): ?Modele
+    {
+        return $this->construire;
+    }
+
+    public function setConstruire(?Modele $construire): self
+    {
+        $this->construire = $construire;
 
         return $this;
     }
