@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}welcome{% endblock %}
+{% block title %}Home Sweet Home{% endblock %}
 
 {% block body %}
     <br>
@@ -10,9 +10,7 @@
         <div id="info"><h4 class="heading-color">Des Voitures Avalible ~ </h4></div>
         <div class="uk-container uk-container-small">
         <table class="uk-table uk-table-hover">
-            
             <thead>
-                
                 <tr>
                     <th>Marque</th>
                     <th>origine</th>
@@ -22,7 +20,6 @@
         {% for Annonce in Annonces %}
             <tbody>
                 <tr>
-           
                     <td>{{Annonce.nom}}</td>
                     <td>{{ Annonce.origine }}</td>
                     <td>{{Annonce.construire}}</td>
