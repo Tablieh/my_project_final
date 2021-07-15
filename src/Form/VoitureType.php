@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class VoitureType extends AbstractType
 {
@@ -14,10 +15,14 @@ class VoitureType extends AbstractType
     {
         $builder
             ->add('type')
-            ->add('description')
+            ->add('description', TextareaType::class, ['attr' => [
+                    "class" => "uk-textarea uk-form-small",
+                ]])
             ->add('nbPortes')
             ->add('couleur')
-            ->add('image')
+            ->add('image', TextareaType::class, ['attr' => [
+                    "class" => "uk-textarea uk-form-small",
+                ]])
             ->add('motorisation')
             ->add('modele')
             ->add('Valider', SubmitType::class, [
