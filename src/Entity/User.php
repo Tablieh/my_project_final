@@ -44,18 +44,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Avis::class, inversedBy="users")
+     * @ORM\OneToMany(targetEntity=Avis::class, mappedBy="user", orphanRemoval=true)
      */
-    private $donner;
+    private $avis;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Voiture::class, inversedBy="users")
+     * @ORM\ManyToMany(targetEntity=Voiture::class, mappedBy="listFavoirs")
      */
-    private $listeFavoris;
+    private $voitures;
+
+    
 
     public function __construct()
     {
-        $this->listeFavoris = new ArrayCollection();
+        $this->avis = new ArrayCollection();
+        $this->voitures = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -163,14 +166,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getDonner(): ?Avis
+    /**
+     * @return Collection|Avis[]
+     */
+    public function getAvis(): Collection
     {
-        return $this->donner;
+        return $this->avis;
     }
 
-    public function setDonner(?Avis $donner): self
+    public function addAvi(Avis $avi): self
     {
-        $this->donner = $donner;
+        if (!$this->avis->contains($avi)) {
+            $this->avis[] = $avi;
+            $avi->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAvi(Avis $avi): self
+    {
+        if ($this->avis->removeElement($avi)) {
+            // set the owning side to null (unless already changed)
+            if ($avi->getUser() === $this) {
+                $avi->setUser(null);
+            }
+        }
 
         return $this;
     }
@@ -178,24 +199,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return Collection|Voiture[]
      */
-    public function getListeFavoris(): Collection
+    public function getVoitures(): Collection
     {
-        return $this->listeFavoris;
+        return $this->voitures;
     }
 
-    public function addListeFavori(Voiture $listeFavori): self
+    public function addVoiture(Voiture $voiture): self
     {
-        if (!$this->listeFavoris->contains($listeFavori)) {
-            $this->listeFavoris[] = $listeFavori;
+        if (!$this->voitures->contains($voiture)) {
+            $this->voitures[] = $voiture;
+            $voiture->addListFavoir($this);
         }
 
         return $this;
     }
 
-    public function removeListeFavori(Voiture $listeFavori): self
+    public function removeVoiture(Voiture $voiture): self
     {
-        $this->listeFavoris->removeElement($listeFavori);
+        if ($this->voitures->removeElement($voiture)) {
+            $voiture->removeListFavoir($this);
+        }
 
         return $this;
     }
+
+    
 }

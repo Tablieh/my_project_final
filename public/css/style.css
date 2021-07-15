@@ -38,6 +38,7 @@ color: rgb(247, 246, 243);
 .form  {
     color: rgb(10, 10, 10);
    margin-left: 200px;
+    margin-top: 25px;
 }
 .uk-input, .uk-select, .uk-textarea{
     background-color: gainsboro
@@ -45,4 +46,22 @@ color: rgb(247, 246, 243);
 label{
     color: rgb(10, 10, 10);
     margin-right: 5px;
+}
+
+.continer{
+    margin-left: 150px;
+    margin-bottom: 25px;
+    display: flex;
+}
+.flex{
+    margin:25px 25px 25px 50px;
+    flex-direction: column;
+}
+.image{
+    margin-top: 15px;
+    box-shadow: 0 0 0 5px #aac4f4;
+    border-radius: 30px;
+    margin-left: 190px;
+    width: 50%;
+    height: 50%;
 }

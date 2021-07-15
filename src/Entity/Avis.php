@@ -35,19 +35,22 @@ class Avis
     private $dateAvis;
 
     /**
-     * @ORM\OneToMany(targetEntity=User::class, mappedBy="donner")
+     * @ORM\ManyToOne(targetEntity=Voiture::class, inversedBy="avis")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $users;
+    private $voiture;
 
     /**
-     * @ORM\OneToMany(targetEntity=Voiture::class, mappedBy="concerner")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="avis")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $voitures;
+    private $user;
+
+    
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
-        $this->voitures = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -91,63 +94,29 @@ class Avis
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
+    public function getVoiture(): ?Voiture
     {
-        return $this->users;
+        return $this->voiture;
     }
 
-    public function addUser(User $user): self
+    public function setVoiture(?Voiture $voiture): self
     {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->setDonner($this);
-        }
+        $this->voiture = $voiture;
 
         return $this;
     }
 
-    public function removeUser(User $user): self
+    public function getUser(): ?User
     {
-        if ($this->users->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($user->getDonner() === $this) {
-                $user->setDonner(null);
-            }
-        }
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
 
-    /**
-     * @return Collection|Voiture[]
-     */
-    public function getVoitures(): Collection
-    {
-        return $this->voitures;
-    }
-
-    public function addVoiture(Voiture $voiture): self
-    {
-        if (!$this->voitures->contains($voiture)) {
-            $this->voitures[] = $voiture;
-            $voiture->setConcerner($this);
-        }
-
-        return $this;
-    }
-
-    public function removeVoiture(Voiture $voiture): self
-    {
-        if ($this->voitures->removeElement($voiture)) {
-            // set the owning side to null (unless already changed)
-            if ($voiture->getConcerner() === $this) {
-                $voiture->setConcerner(null);
-            }
-        }
-
-        return $this;
-    }
+    
 }

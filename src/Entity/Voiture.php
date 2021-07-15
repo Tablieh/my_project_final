@@ -55,19 +55,27 @@ class Voiture
     private $users;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Avis::class, inversedBy="voitures")
+     * @ORM\ManyToOne(targetEntity=Modele::class, inversedBy="voitures")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $concerner;
+    private $modele;
 
     /**
-     * @ORM\OneToMany(targetEntity=Modele::class, mappedBy="voiture")
+     * @ORM\OneToMany(targetEntity=Avis::class, mappedBy="voiture", orphanRemoval=true)
      */
-    private $associer;
+    private $avis;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="voitures")
+     */
+    private $listFavoirs;
+
+    
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
-        $this->associer = new ArrayCollection();
+        $this->avis = new ArrayCollection();
+        $this->listFavoirs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -147,72 +155,71 @@ class Voiture
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
+    public function getModele(): ?Modele
     {
-        return $this->users;
+        return $this->modele;
     }
 
-    public function addUser(User $user): self
+    public function setModele(?Modele $modele): self
     {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->addListeFavori($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->removeElement($user)) {
-            $user->removeListeFavori($this);
-        }
-
-        return $this;
-    }
-
-    public function getConcerner(): ?Avis
-    {
-        return $this->concerner;
-    }
-
-    public function setConcerner(?Avis $concerner): self
-    {
-        $this->concerner = $concerner;
+        $this->modele = $modele;
 
         return $this;
     }
 
     /**
-     * @return Collection|Modele[]
+     * @return Collection|Avis[]
      */
-    public function getAssocier(): Collection
+    public function getAvis(): Collection
     {
-        return $this->associer;
+        return $this->avis;
     }
 
-    public function addAssocier(Modele $associer): self
+    public function addAvi(Avis $avi): self
     {
-        if (!$this->associer->contains($associer)) {
-            $this->associer[] = $associer;
-            $associer->setVoiture($this);
+        if (!$this->avis->contains($avi)) {
+            $this->avis[] = $avi;
+            $avi->setVoiture($this);
         }
 
         return $this;
     }
 
-    public function removeAssocier(Modele $associer): self
+    public function removeAvi(Avis $avi): self
     {
-        if ($this->associer->removeElement($associer)) {
+        if ($this->avis->removeElement($avi)) {
             // set the owning side to null (unless already changed)
-            if ($associer->getVoiture() === $this) {
-                $associer->setVoiture(null);
+            if ($avi->getVoiture() === $this) {
+                $avi->setVoiture(null);
             }
         }
 
         return $this;
     }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getListFavoirs(): Collection
+    {
+        return $this->listFavoirs;
+    }
+
+    public function addListFavoir(User $listFavoir): self
+    {
+        if (!$this->listFavoirs->contains($listFavoir)) {
+            $this->listFavoirs[] = $listFavoir;
+        }
+
+        return $this;
+    }
+
+    public function removeListFavoir(User $listFavoir): self
+    {
+        $this->listFavoirs->removeElement($listFavoir);
+
+        return $this;
+    }
+
+    
 }

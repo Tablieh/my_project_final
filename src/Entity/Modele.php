@@ -25,18 +25,21 @@ class Modele
     private $modele;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Voiture::class, inversedBy="associer")
+     * @ORM\ManyToOne(targetEntity=Marque::class, inversedBy="modeles")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $voiture;
+    private $marque;
 
     /**
-     * @ORM\OneToMany(targetEntity=Marque::class, mappedBy="construire")
+     * @ORM\OneToMany(targetEntity=Voiture::class, mappedBy="modele", orphanRemoval=true)
      */
-    private $marques;
+    private $voitures;
+
+    
 
     public function __construct()
     {
-        $this->marques = new ArrayCollection();
+        $this->voitures = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -56,45 +59,47 @@ class Modele
         return $this;
     }
 
-    public function getVoiture(): ?Voiture
+    public function getMarque(): ?Marque
     {
-        return $this->voiture;
+        return $this->marque;
     }
 
-    public function setVoiture(?Voiture $voiture): self
+    public function setMarque(?Marque $marque): self
     {
-        $this->voiture = $voiture;
+        $this->marque = $marque;
 
         return $this;
     }
 
     /**
-     * @return Collection|Marque[]
+     * @return Collection|Voiture[]
      */
-    public function getMarques(): Collection
+    public function getVoitures(): Collection
     {
-        return $this->marques;
+        return $this->voitures;
     }
 
-    public function addMarque(Marque $marque): self
+    public function addVoiture(Voiture $voiture): self
     {
-        if (!$this->marques->contains($marque)) {
-            $this->marques[] = $marque;
-            $marque->setConstruire($this);
+        if (!$this->voitures->contains($voiture)) {
+            $this->voitures[] = $voiture;
+            $voiture->setModele($this);
         }
 
         return $this;
     }
 
-    public function removeMarque(Marque $marque): self
+    public function removeVoiture(Voiture $voiture): self
     {
-        if ($this->marques->removeElement($marque)) {
+        if ($this->voitures->removeElement($voiture)) {
             // set the owning side to null (unless already changed)
-            if ($marque->getConstruire() === $this) {
-                $marque->setConstruire(null);
+            if ($voiture->getModele() === $this) {
+                $voiture->setModele(null);
             }
         }
 
         return $this;
     }
+
+    
 }
