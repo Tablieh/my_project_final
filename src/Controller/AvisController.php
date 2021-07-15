@@ -53,7 +53,7 @@ class AvisController extends AbstractController
             return $this->redirectToRoute("avis");
 
         }
-        return $this->render('activity/add_edit_Avis.html.twig', [
+        return $this->render('avis/add_edit_Avis.html.twig', [
             'AvisType' => $form->createView(),
             'editMode'=> $Avis->getId() !== null
         ]);
@@ -64,7 +64,7 @@ class AvisController extends AbstractController
      */
     /*
     public function showAvis(Marque $avis): Response {
-        return $this->render('activity/showAvis.html.twig', [
+        return $this->render('avis/showAvis.html.twig', [
             'avis' => $avis
         ]);
     }

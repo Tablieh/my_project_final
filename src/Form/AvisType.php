@@ -17,7 +17,6 @@ class AvisType extends AbstractType
             ->add('note')
             ->add('dateAvis')
             ->add('voiture')
-            ->add('user')
             ->add('Valider', SubmitType::class, [
                 'attr' => [
                     "class" => "uk-button uk-button-primary uk-button-small",
