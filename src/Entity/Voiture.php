@@ -49,10 +49,7 @@ class Voiture
      */
     private $motorisation;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="listeFavoris")
-     */
-    private $users;
+    
 
     /**
      * @ORM\ManyToOne(targetEntity=Modele::class, inversedBy="voitures")

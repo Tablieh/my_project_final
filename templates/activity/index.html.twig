@@ -3,21 +3,21 @@
 {% block title %}Lets Do This{% endblock %}
 
 {% block body %}
-<img class="image" src="{{asset("image/index.jpg")}}" alt="img">
-<div class="continer" >
-    <div class="flex" >
-        <h3>Ajouter Une Marque</h3>
-        <button><a href="{{path('Marque_add')}}"> Ajouter Une Marque </a></button>
+    <img class="image" src="{{asset("image/index.jpg")}}" alt="img">
+    <div class="continer" >
+        <div class="flex" >
+            <h3>Ajouter Une Marque</h3>
+            <button><a href="{{path('Marque_add')}}"> Ajouter Une Marque </a></button>
+        </div>
+        <div class="flex" >
+            <h3>Ajouter Une Modele</h3>
+            <button><a href="{{path('Modele_add')}}"> Ajouter Une Modele </a></button>
+        </div>
+        <div class="flex" >
+            <h3>Ajouter Une Voiture</h3>
+            <button><a href="{{path('Voiture_add')}}"> Ajouter Une Voiture </a></button>
+        </div>
     </div>
-    <div class="flex" >
-        <h3>Ajouter Une Modele</h3>
-        <button><a href="{{path('Modele_add')}}"> Ajouter Une Modele </a></button>
-    </div>
-    <div class="flex" >
-        <h3>Ajouter Une Voiture</h3>
-        <button><a href="{{path('Voiture_add')}}"> Ajouter Une Voiture </a></button>
-    </div>
-</div>
 
 
 
