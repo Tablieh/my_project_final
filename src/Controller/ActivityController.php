@@ -25,10 +25,17 @@ class ActivityController extends AbstractController
         $marque = $this->getDoctrine()
                 ->getRepository(Marque::class)
                 ->findAll();
+        $modele = $this->getDoctrine()
+                ->getRepository(Modele::class)
+                ->findAll();
+        $voiture = $this->getDoctrine()
+                ->getRepository(Voiture::class)
+                ->findAll();
     
         return $this->render('activity/index.html.twig', [
-            'marque' => $marque,
-
+            'marques' => $marque,
+            'modeles' => $modele,
+            'voitures' => $voiture,
         ]);
     }
 

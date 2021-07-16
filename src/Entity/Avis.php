@@ -120,6 +120,6 @@ class Avis
 
     public function __toString()
     {
-        $this->user;
+        (string)$this->user;
     }
 }

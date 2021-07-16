@@ -50,7 +50,7 @@ class AvisController extends AbstractController
             $entityManager->persist($Avis);
             $entityManager->flush();
             //on redirige vers la liste des Avis (Marque_list etant le nom de la route)
-            return $this->redirectToRoute("avis");
+            return $this->redirectToRoute("home");
 
         }
         return $this->render('avis/add_edit_Avis.html.twig', [

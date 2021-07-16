@@ -101,8 +101,8 @@ class Modele
         return $this;
     }
 
-    public function __toString()
+        public function __toString()
     {
-        return $this->marque;
+        return $this->modele;
     }
 }
