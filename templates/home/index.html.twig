@@ -14,7 +14,6 @@
                 <tr>
                     <th>Marque</th>
                     <th>origine</th>
-                    <th>construire</th>
                 </tr>
             </thead>
         {% for Annonce in Annonces %}
@@ -22,7 +21,6 @@
                 <tr>
                     <td>{{Annonce.nom}}</td>
                     <td>{{ Annonce.origine }}</td>
-                    <td>{{Annonce.construire}}</td>
                 </tr>
             </tbody>
         {% endfor %}

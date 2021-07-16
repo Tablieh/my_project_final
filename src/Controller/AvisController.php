@@ -62,11 +62,11 @@ class AvisController extends AbstractController
     /**
      * @Route("/avis/{id}", name="avis_show", methods="GET")
      */
-    /*
-    public function showAvis(Marque $avis): Response {
+    
+    public function showAvis(Avis $avis): Response {
         return $this->render('avis/showAvis.html.twig', [
             'avis' => $avis
         ]);
     }
-    */
+    
 }

@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Marque;
 use App\Entity\Modele;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,7 +16,12 @@ class ModeleType extends AbstractType
     {
         $builder
             ->add('modele')
-            ->add('marque')
+            ->add('marque',EntityType::class,[
+                'class' => Marque::class,
+                'choice_label' => 'nom',
+                'attr' => ["class" => "uk-select"]
+            ])
+
             ->add('Valider', SubmitType::class, [
                 'attr' => [
                     "class" => "uk-button uk-button-primary uk-button-small",

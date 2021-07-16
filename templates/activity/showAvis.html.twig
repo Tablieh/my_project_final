@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<a class="ret" href="{{ path('avis_index') }}" > Retour </a>
+
+
+{% for Avi in Avis.module %}
+    <p>{{ Avi.id }}</p>
+    <p>{{ Avi.text }}</p>
+    <p>{{ Avi.note }}</p>
+    <p>{{ Avi.dateAvis }}</p>
+    <p>{{ Avi.voiture }}</p>
+{% endfor %}
+
+{% for Voiture in Avis.Voiture %}
+    <a href="{{ path('Voiture_show', {'id':Voiture.id}) }}">{{ Voiture.modele }}</a>
+{% endfor %}
+{% endblock %}

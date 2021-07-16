@@ -12,13 +12,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-    /**
-     * @Route("/activity")
-     */
+/**
+ * @Route("/activity")
+ */
 class ActivityController extends AbstractController
 {
     /**
-     * @Route("/", name="activitys_index")
+     * @Route("/", name="activity_index")
      */
     public function index()
     {
@@ -54,7 +54,7 @@ class ActivityController extends AbstractController
             $entityManager->persist($Marque);
             $entityManager->flush();
             //on redirige vers la liste des Marque (Marque_list etant le nom de la route)
-            return $this->redirectToRoute("activity");
+            return $this->redirectToRoute("home");
 
         }
         return $this->render('activity/add_edit_Marque.html.twig', [
@@ -95,7 +95,7 @@ class ActivityController extends AbstractController
             $entityManager->persist($Modele);
             $entityManager->flush();
             //on redirige vers la liste des Modele (Modele_list etant le nom de la route)
-            return $this->redirectToRoute("activity");
+            return $this->redirectToRoute("home");
 
         }
         return $this->render('activity/add_edit_Modele.html.twig', [
@@ -135,7 +135,7 @@ class ActivityController extends AbstractController
             $entityManager->persist($Voiture);
             $entityManager->flush();
             //on redirige vers la liste des Voiture (Voiture_list etant le nom de la route)
-            return $this->redirectToRoute("activity");
+            return $this->redirectToRoute("home");
 
         }
         return $this->render('activity/add_edit_Voiture.html.twig', [
