@@ -153,11 +153,9 @@ class ActivityController extends AbstractController
     /**
      * @Route("/Voiture/{id}", name="Voiture_show", methods="GET")
      */
-    /*
     public function showVoiture(Voiture $Voiture): Response {
         return $this->render('activity/showVoiture.html.twig', [
             'voiture' => $Voiture
         ]);
     }
-    */
 }

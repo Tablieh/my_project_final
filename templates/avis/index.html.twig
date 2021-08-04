@@ -10,7 +10,28 @@
             <button><a href="{{path('Avis_add')}}"> Ajouter Une Avis </a></button>
         </div>
     </div>
-
+    <h2>Les avis sur des voitures</h2>
+    <table class="uk-table uk-table-hover">
+        <thead>
+            <tr>
+                <th>modele</th>
+                <th>text</th>
+                <th>modifier</th>
+                <th>Plus info</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for avi in avis %}
+            <tr>
+                <td>{{ avi.voiture.modele }} </td>
+                <td>{{ avi.text }}</td>
+                <td><a class="uk-button uk-button-primary "  href="{{ path('Avis_edit',{'id':avi.id}) }}">modifier</a></td>
+                <td><li class="uk-active"><a href="{{ path("avis_show",{'id':avi.id}) }}">Des Avis</a></li></td>
+            </tr>
+    {% endfor %}
+    
+        </tbody>
+    </table>
 
 
 {% endblock %}

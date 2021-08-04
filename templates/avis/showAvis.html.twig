@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<a class="link" href="{{ path('avis_index') }}" > Retour </a>
+<h1 class="uk-text-center">Bienvenue sur des avis sur ce modele</h1>
+        <div class="uk-container uk-container-small">
+        {% for Avi in avis %}
+        <table class="uk-table uk-table-hover">
+            <thead>
+                <tr>
+                    <th>Modele</th>
+                    <th>Text</th>
+                    <th>note</th>
+                    <th>DateAvis</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="{{ path('avis_show', {id:Avi.voiture.id}) }}">{{ Avi.voiture.modele }}</a>
+                    </td>
+                    <td>{{ Avi.text }}</td>
+                    <td>{{ Avi.note }}</td>
+                    <td>{{ Avi.dateAvis|date("d/m/Y") }}</td>
+                </tr>
+            </tbody>
+        </table><br><br>
+        {% endfor %}
+        </div>
+
+{% endblock %}
