@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Avis;
 use App\Form\AvisType;
+use Doctrine\ORM\Mapping\Id;
+use App\Repository\AvisRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -50,7 +52,7 @@ class AvisController extends AbstractController
             $entityManager->persist($Avis);
             $entityManager->flush();
             //on redirige vers la liste des Avis (Marque_list etant le nom de la route)
-            return $this->redirectToRoute("home");
+            return $this->redirectToRoute("avis_index");
 
         }
         return $this->render('avis/add_edit_Avis.html.twig', [
@@ -58,15 +60,51 @@ class AvisController extends AbstractController
             'editMode'=> $Avis->getId() !== null
         ]);
     }
-    
+    /**
+     * @Route("/del/{id}", name="avis_del")
+     */
+    public function del_edit(Avis $avis)
+    {
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+
+        $entityManager->remove($avis);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('avis_index');
+    }
+
     /**
      * @Route("/avis/{id}", name="avis_show", methods="GET")
      */
     
-    public function showAvis(Avis $avis): Response {
+    public function showAvis(Avis $resultat): Response {
         return $this->render('avis/showAvis.html.twig', [
-            'avis' => $avis
+            'resultat' => $resultat
         ]);
     }
-    
+
+    /**
+     * @Route("/avis/{id}", name="avis_tout")
+     */
+    public function AvisParModele(int $id, AvisRepository $avisRepository, Avis $tout): Response
+    {
+        $res = $avisRepository
+            ->find($id);
+
+        $repository = $this->getDoctrine()->getRepository(Avis::class);
+
+            // look for a single Product by its primary key (usually "id")
+            $res = $repository->find($id);
+
+            // look for multiple Product objects matching the id, ordered by text
+            $res = $repository->findBy(
+                ['modele' => $res],
+                ['text' => 'ASC']
+            );
+        return $this->render('avis/showAvis.html.twig', [
+        'tout' => $tout
+    ]);
+    }
 }

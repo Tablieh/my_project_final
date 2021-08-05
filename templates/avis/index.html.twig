@@ -17,18 +17,25 @@
                 <th>modele</th>
                 <th>text</th>
                 <th>modifier</th>
-                <th>Plus info</th>
+                <th> Delete </th>
             </tr>
         </thead>
         <tbody>
-    {% for avi in avis %}
-            <tr>
-                <td>{{ avi.voiture.modele }} </td>
-                <td>{{ avi.text }}</td>
-                <td><a class="uk-button uk-button-primary "  href="{{ path('Avis_edit',{'id':avi.id}) }}">modifier</a></td>
-                <td><li class="uk-active"><a href="{{ path("avis_show",{'id':avi.id}) }}">Des Avis</a></li></td>
-            </tr>
-    {% endfor %}
+            {% for avi in avis %}
+                <tr>
+                    <td>
+					    <a href="{{ path("avis_show",{'id':avi.id}) }}">{{ avi.voiture.modele }}</a>
+				    </td>
+                    <td>{{ avi.text }}</td>
+                    <td><a class="uk-button uk-button-primary "  href="{{ path('Avis_edit',{'id':avi.id}) }}">modifier</a></td>
+                    <td>
+					    <a class="uk-icon-link" uk-icon="trash" href="{{ path('avis_del', {'id':avi.id}) }}"> </a>
+				    </td>
+                     <td>
+					    <a href="{{ path("avis_tout",{'id':avi.id}) }}">{{ avi.voiture.modele }}</a>
+				    </td>
+                </tr>
+            {% endfor %}
     
         </tbody>
     </table>

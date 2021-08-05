@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Avis{% endblock %}
+
+{% block body %}
+    <img class="image" src="{{asset("image/home.jpg")}}" alt="img">
+    <div class="continer" >
+        <div class="flex" >
+            <h3>Ajouter Une Avis</h3>
+            <button><a href="{{path('Avis_add')}}"> Ajouter Une Avis </a></button>
+        </div>
+    </div>
+    <h2>Les avis sur 1 modele</h2>
+    <table class="uk-table uk-table-hover">
+        <thead>
+            <tr>
+                <th>text</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for res in tout %}
+                        <tr>
+                            <td>{{ avi.text }}</td>
+                        </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
