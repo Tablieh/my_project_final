@@ -23,10 +23,15 @@ class AvisController extends AbstractController
         $avis = $this->getDoctrine()
                 ->getRepository(Avis::class)
                 ->findAll();
+        
+        $results = $this->getDoctrine()
+                ->getRepository(Avis::class)
+                ->findBy([], ["voiture" => "ASC"]
+                    );
     
         return $this->render('avis/index.html.twig', [
             'avis' => $avis,
-
+            'results' => $results
         ]);
     }
 
@@ -88,23 +93,19 @@ class AvisController extends AbstractController
     /**
      * @Route("/avis/{id}", name="avis_tout")
      */
-    public function AvisParModele(int $id, AvisRepository $avisRepository, Avis $tout): Response
+    public function AvisParModele(int $id, AvisRepository $avisRepository, Avis $results): Response
     {
         $res = $avisRepository
             ->find($id);
 
         $repository = $this->getDoctrine()->getRepository(Avis::class);
 
-            // look for a single Product by its primary key (usually "id")
-            $res = $repository->find($id);
-
-            // look for multiple Product objects matching the id, ordered by text
+            // look for multiple Product objects matching the modele
             $res = $repository->findBy(
-                ['modele' => $res],
-                ['text' => 'ASC']
+                ['modele' => $res]
             );
         return $this->render('avis/showAvis.html.twig', [
-        'tout' => $tout
+        'results' => $results
     ]);
     }
 }

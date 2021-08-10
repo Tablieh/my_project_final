@@ -9,15 +9,34 @@
             <h3>Ajouter Une Avis</h3>
             <button><a href="{{path('Avis_add')}}"> Ajouter Une Avis </a></button>
         </div>
+        <div class="scrolling-wrapper">
+            <article class="box">
+                <table>
+                    <thead>
+                        <tr>    <th>Tout les Avis</th>  </tr>
+                    </thead>
+                    <tbody>
+                        {% for result in results %}
+                            <tr>
+                                <td>
+                                    <a href="{{ path("avis_tout",{'id':result.id}) }}">{{ result.voiture.modele }}</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </article>
+        </div>
     </div>
     <h2>Les avis sur des voitures</h2>
     <table class="uk-table uk-table-hover">
         <thead>
             <tr>
-                <th>modele</th>
+                <th>Modele</th>
                 <th>text</th>
                 <th>modifier</th>
                 <th> Delete </th>
+                
             </tr>
         </thead>
         <tbody>
@@ -31,14 +50,10 @@
                     <td>
 					    <a class="uk-icon-link" uk-icon="trash" href="{{ path('avis_del', {'id':avi.id}) }}"> </a>
 				    </td>
-                     <td>
-					    <a href="{{ path("avis_tout",{'id':avi.id}) }}">{{ avi.voiture.modele }}</a>
-				    </td>
                 </tr>
             {% endfor %}
-    
+            
         </tbody>
     </table>
-
-
+    
 {% endblock %}
