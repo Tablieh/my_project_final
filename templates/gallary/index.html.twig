@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voiture{% endblock %}
+
+{% block body %}
+<br>
+        <div id="info"><h4 class="heading-color">Des Voitures valable ~ </h4></div>
+        <div class="uk-container uk-container-small">
+        <table class="uk-table uk-table-hover">
+            <thead>
+                <tr>
+                    <th>type</th>
+                    <th>description</th>
+                    <th>nbPortes</th>
+                    <th>couleur</th>
+                    <th>image</th>
+                    <th>motorisation</th>
+                    <th>modele</th>
+
+                </tr>
+            </thead>
+        {% for voiture in voitures %}
+            <tbody>
+                <tr>
+                    <td>{{voiture.type}}</td>
+                    <td class="scrolling-description">
+                        <article class="box-desc">
+                            {{voiture.description}}
+                        </article>
+                    </td>
+                    
+                    <td>{{voiture.nbPortes}}</td>
+                    <td>{{voiture.couleur}}</td>
+                    <td><img class="image_table" src="{{voiture.image}}" alt="cars"></td>
+                    <td>{{voiture.motorisation}}</td>
+                    <td>{{ voiture.modele }}</td>
+
+                </tr>
+            </tbody>
+        {% endfor %}
+        
+         </table>
+        </div>
+
+{% endblock %}
