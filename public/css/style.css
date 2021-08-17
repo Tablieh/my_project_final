@@ -144,3 +144,25 @@ div.scrolling-wrapper a {
 .uk-icon-link{
     color: crimson;
 }
+.uk-table th{
+    border-style: double;
+    border-color: rgb(51,153,255);
+    color: indigo;
+}
+.uk-table td{
+    border-style: solid;
+    border-color: rgb(51,153,255);
+    color: rgb(10, 10, 10);
+}
+
+.zoom p {
+text-align:center;
+}
+.zoom img {
+    width: 1300px;
+    height: 100px;
+}
+.zoom img:hover {
+    width: 3000px;
+    height: 200px;
+}
