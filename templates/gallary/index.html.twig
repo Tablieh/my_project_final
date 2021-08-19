@@ -6,42 +6,26 @@
 <br>
         <div id="info"><h4 class="heading-color">Des Voitures valable ~ </h4></div>
         <div class="uk-container uk-container-small">
-        <table class="uk-table uk-table-hover">
-            <thead>
-                <tr>
-                    <th>type</th>
-                    <th>description</th>
-                    <th>nbPortes</th>
-                    <th>couleur</th>
-                    <th>image</th>
-                    <th>motorisation</th>
-                    <th>modele</th>
-
-                </tr>
-            </thead>
-        {% for voiture in voitures %}
-            <tbody>
-                <tr>
-                    <td>{{voiture.type}}</td>
-                    <td class="scrolling-description">
-                        <article class="box-desc">
-                            {{voiture.description}}
-                        </article>
-                    </td>
-                    
-                    <td>{{voiture.nbPortes}}</td>
-                    <td>{{voiture.couleur}}</td>
-                    <td><div class="zoom">
-                            <p><img class="image_table" src="{{voiture.image}}" alt="cars"></p>
-                        </div></td>
-                    <td>{{voiture.motorisation}}</td>
-                    <td>{{ voiture.modele }}</td>
-
-                </tr>
-            </tbody>
-        {% endfor %}
-        
-         </table>
+            <table class="uk-table uk-table-hover">
+                <thead>
+                    <tr>
+                        <th class="text">modele</th>
+                        <th class="text">Delete</th>
+                    </tr>
+                </thead>
+                {% for voiture in voitures %}
+                    <tbody>
+                        <tr>
+                            <td class="text">
+                                <a href="{{ path("Voiture_show",{'id':voiture.id}) }}"> {{ voiture.modele }} </a>
+                            </td>
+                            <td class="text">
+					            <a class="uk-icon-link" uk-icon="trash" href="{{ path('Voiture_del', {'id':voiture.id}) }}"> </a>
+				             </td>
+                        </tr>
+                    </tbody>
+                {% endfor %}
+            </table>
         </div>
 
 {% endblock %}

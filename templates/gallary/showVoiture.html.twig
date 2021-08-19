@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<a class="link" href="{{ path('gallary') }}" > Retour </a>
+<h1 class="uk-text-center">Voila les information concern ce Modele</h1>
+        <div class="uk-container uk-container-small">
+                    <div class="cover">
+                        
+                        <div class="zoom">
+                            <img id="image-border" src="{{resultat.image}}" alt="cars">
+                        </div>
+                    </div>
+                    <h2 id="h2-flex"> Le modele est :
+                        
+                         {{ resultat.modele }}</h2>
+                    <div>
+                        <p class="justify"><strong>Type : </strong>{{resultat.type}}</p>
+                        <p class="justify"><strong>Description : </strong> {{resultat.description}} </p>
+                        <p class="justify"><strong>NPortes : </strong> {{resultat.nbPortes}} </p>
+                        <p class="justify"><strong>Couleur : </strong> {{resultat.couleur}}</p>
+                        
+                        <p class="justify"><strong>Motorisation : </strong> {{resultat.motorisation}}</p>
+                    </div>
+                    
+                    
+
+        </div>
+
+{% endblock %}
