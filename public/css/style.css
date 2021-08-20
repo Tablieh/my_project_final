@@ -39,7 +39,8 @@ color: rgb(247, 246, 243);
 .form  {
     color: rgb(10, 10, 10);
    margin-left: 200px;
-    margin-top: 25px;  
+    margin-top: 25px;
+    margin-bottom: 150px;
 }
 .uk-input, .uk-select, .uk-textarea{
     background-color: gainsboro
@@ -173,16 +174,22 @@ th.text,.text{
 .a-button {
     color:  #fff;
 }
+body{
+position: relative;
+}
+.uk-container{
+margin-bottom: 150px;
+}
 .footer{
     text-align: center;
     background: rgb(51,153,255);
     background: linear-gradient(90deg, rgba(51,153,255,1) 0%, rgba(107,106,136,1) 35%, rgba(51,153,255,1) 100%);
-    color: cornsilk;
-    padding: 30px;
-    position:absolute;
-    bottom:0;
+    color: cornsilk;    
+    position: absolute;
+    padding: 50px;
     width:100%;
 }
+
 .uk-navbar-toggle{
     color: cornsilk;
 }
