@@ -9,6 +9,7 @@
             <table class="uk-table uk-table-hover">
                 <thead>
                     <tr>
+                        <th>Voitures</th>
                         <th class="text">modele</th>
                         <th class="text">Delete</th>
                     </tr>
@@ -16,6 +17,7 @@
                 {% for voiture in voitures %}
                     <tbody>
                         <tr>
+                            <td>{{voiture.modele.marque}}</td>
                             <td class="text">
                                 <a href="{{ path("Voiture_show",{'id':voiture.id}) }}"> {{ voiture.modele }} </a>
                             </td>

@@ -21,11 +21,9 @@ class GallaryController extends AbstractController
                 ->getRepository(Voiture::class)
                 ->findBy([], ["modele" => "ASC"]
                     );
-    
         return $this->render('gallary/index.html.twig', [
             'voitures' => $voiture,
             'resultat' => $resultat,
-            
         ]);
     }
     /**

@@ -152,7 +152,6 @@ div.scrolling-wrapper a {
     padding: 0;
     padding-bottom: 0em;
 }
-
 .justify{
     max-width: fit-content;
      color: black;
@@ -160,7 +159,6 @@ div.scrolling-wrapper a {
     font-family: 'Playfair Display', serif;
     text-align: justify;
 }
-
 th.text,.text{
     text-align: center;
 }
@@ -174,4 +172,23 @@ th.text,.text{
 }
 .a-button {
     color:  #fff;
+}
+.footer{
+    text-align: center;
+    background: rgb(51,153,255);
+    background: linear-gradient(90deg, rgba(51,153,255,1) 0%, rgba(107,106,136,1) 35%, rgba(51,153,255,1) 100%);
+    color: cornsilk;
+    padding: 30px;
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
+.uk-navbar-toggle{
+    color: cornsilk;
+}
+footer>p{
+    margin-bottom: 0px;
+}
+#burger{
+    display: none;
 }

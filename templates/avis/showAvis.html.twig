@@ -19,7 +19,13 @@
                 <tr>
                     <td>{{ resultat.voiture.modele }}</td>
                     <td>{{ resultat.text }}</td>
-                    <td>{{ resultat.note }}</td>
+                    <td class="uk-icon-link"> Note :
+                    {% for i in 1..resultat.note %}
+                        <a class="uk-icon-link" uk-icon="star" href="{{path("avis_show",{'id':resultat.id}) }}" > </a>
+                    {% endfor %}
+
+</td>
+                    
                     <td>{{ resultat.dateAvis|date("d/m/Y") }}</td>
                     <td>{{ resultat.user.email }}</td>
                 </tr>

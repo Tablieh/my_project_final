@@ -16,21 +16,29 @@
         {% endblock %}
     </head>
     <body>
+    
         <div class="uk-container uk-container-large">
                     <nav class="uk-navbar-container" uk-navbar>
                         <img id="icon"src="{{ asset("image/try2.jpg") }}" alt="no-image">
                         <div class="uk-navbar-center">
-                            <ul class="uk-navbar-nav">
+                        
+                            <ul class="uk-navbar-nav" class="uk-nav">
                                 
                                 {% if app.user %}
                                     {% if is_granted("ROLE_ADMIN") %}
 
                                     {% endif %}
-                                    <li class="uk-active"><a href="{{ path("home") }}">home</a></li>
-                                    <li class="uk-active"><a href="{{ path("gallary") }}">gallery</a></li>
-                                    <li class="uk-active"><a href="{{ path("activity_index") }}">activity</a></li>
-                                    <li class="uk-active"><a href="{{ path("avis_index") }}">Des Avis</a></li>
-                                    
+                                    <li id="burger"><a class="uk-navbar-toggle" uk-toggle="target: #sidenav" uk-navbar-toggle-icon></a></li>
+    
+                                    <div id="sidenav" uk-navbar-nav="flip: true" class="uk-navbar-nav">
+                                        <div class="uk-navbar-nav">
+                                        
+                                            <li class="uk-active"><a href="{{ path("home") }}">home</a></li>
+                                            <li class="uk-active"><a href="{{ path("gallary") }}">gallery</a></li>
+                                            <li class="uk-active"><a href="{{ path("activity_index") }}">activity</a></li>
+                                            <li class="uk-active"><a href="{{ path("avis_index") }}">Des Avis</a></li>
+                                        </div>
+                                    </div>
                                     
                                     
                                     <li class="uk-active"><a href="{{ path('logout') }}">LogOut</a></li>
@@ -45,10 +53,12 @@
                         </div>
                     </nav>
                 </div>
+    
+    
         {% block body %}
         {% endblock %}
     </body>
     <footer class="footer">
-        Tablieh~tm Broduction
+        <p >&copy; 2021 -Tablieh~tm Broduction !!</p>
     </footer>
 </html>
