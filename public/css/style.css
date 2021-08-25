@@ -3,13 +3,7 @@ html{
 box-sizing:border-box;
 background-color: gainsboro
 }
-#icon{
-    box-shadow:inset 0 -3em 3em rgba(63, 9, 9, 0.1),
-             0 0  0 1px rgba(0,0,0,0.3),
-             0.5em 0.3em 1em rgba(0,0,0,0.3);
-    width: 150px;
-    height: 100px;
-}
+
 #info{
     margin-left: 100px;
     margin-bottom: 10px;
@@ -23,16 +17,17 @@ margin-left: 100px;
 .uk-text-center{
     color:  rgb(63, 103, 143);
 }
-.uk-navbar-container:not(.uk-navbar-transparent){
+.navbar-blue{
    background: rgb(51,153,255);
    background: linear-gradient(90deg, rgba(51,153,255,1) 0%, rgba(107,106,136,1) 35%, rgba(51,153,255,1) 100%);
+}
+.navbar-blue li>a{
+    color: #fff;
 }
 .uk-navbar-nav>li.uk-active>a{
 color: rgb(247, 246, 243);
 }
-.uk-navbar-nav>li>a{
-    font-size: medium;
-}
+
 .uk-table th{
     color:  rgb(10, 10, 10);
 }
@@ -42,13 +37,21 @@ color: rgb(247, 246, 243);
     margin-top: 25px;
     margin-bottom: 150px;
 }
+.link{
+    margin-left: 175px;
+}
 .uk-input, .uk-select, .uk-textarea{
-    background-color: gainsboro
+    background-color: rgb(255, 255, 255);
+}
+.uk-input, .uk-select:not([multiple]):not([size]){
+    height: 50px;
+    font-size: small;
+    width: 50%;
 }
 label{
     color: rgb(10, 10, 10);
     margin-right: 5px;
-
+    font-size: large;
 }
 
 .continer{
@@ -178,7 +181,7 @@ body{
 position: relative;
 }
 .uk-container{
-margin-bottom: 150px;
+margin-bottom: 50px;
 }
 .footer{
     text-align: center;
@@ -189,7 +192,6 @@ margin-bottom: 150px;
     padding: 50px;
     width:100%;
 }
-
 .uk-navbar-toggle{
     color: cornsilk;
 }
@@ -198,4 +200,27 @@ footer>p{
 }
 #burger{
     display: none;
+}
+/* pour les ecran jusqua une largeur de 800px */
+@media screen and (max-width:800px){
+    .mobile{
+        display: block;
+    }
+    #icon{
+        display: none;
+    }
+    #burger{
+        display: inline;
+        padding: 0.5em;
+    }
+    .uk-navbar-toggle{
+        align-content: right;
+    }
+
+    .heading-color{
+    margin-left:0px;
+    }
+    .footer{
+    text-align:justify;
+    }
 }

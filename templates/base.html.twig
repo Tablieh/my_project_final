@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
@@ -16,45 +17,62 @@
         {% endblock %}
     </head>
     <body>
-    
-        <div class="uk-container uk-container-large">
-                    <nav class="uk-navbar-container" uk-navbar>
-                        <img id="icon"src="{{ asset("image/try2.jpg") }}" alt="no-image">
-                        <div class="uk-navbar-center">
-                        
-                            <ul class="uk-navbar-nav" class="uk-nav">
-                                
-                                {% if app.user %}
+        
+        <header>
+            <!-- Main Navbar -->
+            <nav class="uk-container uk-navbar navbar-blue">
+            
+                <div class="uk-navbar-left">
+                
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-active">
+                            <a href="#">UIKit<strong>ResMenu</strong></a>
+                        </li> 
+                    </ul>
+                </div>
+                <div class="uk-navbar-right">
+                    <ul class="uk-navbar-nav uk-visible@s">
+                        <{% if app.user %}
+                                   {# si on veux on peut faire que le admin peut aller au activiter pour ajouter le marque etc
                                     {% if is_granted("ROLE_ADMIN") %}
-
                                     {% endif %}
-                                    <li id="burger"><a class="uk-navbar-toggle" uk-toggle="target: #sidenav" uk-navbar-toggle-icon></a></li>
-    
-                                    <div id="sidenav" uk-navbar-nav="flip: true" class="uk-navbar-nav">
-                                        <div class="uk-navbar-nav">
-                                        
-                                            <li class="uk-active"><a href="{{ path("home") }}">home</a></li>
-                                            <li class="uk-active"><a href="{{ path("gallary") }}">gallery</a></li>
-                                            <li class="uk-active"><a href="{{ path("activity_index") }}">activity</a></li>
-                                            <li class="uk-active"><a href="{{ path("avis_index") }}">Des Avis</a></li>
-                                        </div>
-                                    </div>
-                                    
-                                    
+                                    #}
+                                    <li class="uk-text-large"><a href="{{ path("home") }}">home</a></li>
+                                    <li class="uk-text-large"><a href="{{ path("gallary") }}">gallery</a></li>
+                                    <li class="uk-text-large"><a href="{{ path("activity_index") }}">activity</a></li>
+                                    <li class="uk-text-large"><a href="{{ path("avis_index") }}">Des Avis</a></li>
+                                    <li class="uk-text-large"><a href="{{ path('logout') }}">LogOut</a></li>
+                                {% else %}
+                                    <li class="uk-text-large"><a href="{{ path('app_login') }}">Connexion</a></li>	
+                                    <li class="uk-text-large"><a href="{{ path('registration') }}">Inscription</a></li>
+                                {% endif %}
+                    </ul>
+                    <a href="#" class="uk-navbar-toggle uk-hidden@s" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>
+                </div>
+            
+            </nav>
+        </header>
+
+        <div id="sidenav" uk-offcanvas="flip: true" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar">
+                <ul class="uk-nav">
+                   {% if app.user %}
+                                   {# si on veux on peut faire que le admin peut aller au activiter pour ajouter le marque etc
+                                    {% if is_granted("ROLE_ADMIN") %}
+                                    {% endif %}
+                                    #}
+                                    <li class="uk-active"><a href="{{ path("home") }}">home</a></li>
+                                    <li class="uk-active"><a href="{{ path("gallary") }}">gallery</a></li>
+                                    <li class="uk-active"><a href="{{ path("activity_index") }}">activity</a></li>
+                                    <li class="uk-active"><a href="{{ path("avis_index") }}">Des Avis</a></li>
                                     <li class="uk-active"><a href="{{ path('logout') }}">LogOut</a></li>
                                 {% else %}
                                     <li class="uk-active"><a href="{{ path('app_login') }}">Connexion</a></li>	
                                     <li class="uk-active"><a href="{{ path('registration') }}">Inscription</a></li>
-                                    
                                 {% endif %}
-                                
-                                
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-    
-    
+                </ul>
+            </div>
+        </div>
         {% block body %}
         {% endblock %}
     </body>
