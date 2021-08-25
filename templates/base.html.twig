@@ -32,7 +32,7 @@
                 </div>
                 <div class="uk-navbar-right">
                     <ul class="uk-navbar-nav uk-visible@s">
-                        <{% if app.user %}
+                        {% if app.user %}
                                    {# si on veux on peut faire que le admin peut aller au activiter pour ajouter le marque etc
                                     {% if is_granted("ROLE_ADMIN") %}
                                     {% endif %}

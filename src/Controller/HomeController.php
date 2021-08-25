@@ -28,9 +28,11 @@ class HomeController extends AbstractController
         $marque = $this->getDoctrine()
                 ->getRepository(Marque::class)
                 ->findAll();
-        $modele = $this->getDoctrine()
+
+        $modeles = $this->getDoctrine()
                 ->getRepository(Modele::class)
-                ->findAll();
+                ->findBy([], ["modele" => "ASC"]);
+
         $voiture = $this->getDoctrine()
                 ->getRepository(Voiture::class)
                 ->findAll();
@@ -38,10 +40,17 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'Annonces' => $Annonces,
             'marques' => $marque,
-            'modeles' => $modele,
+            'modeles' => $modeles,
             'voitures' => $voiture,
         ]);
 
     }
-
+    /**
+     * @Route("/home/{id}", name="home_show", methods="GET")
+     */
+    public function showModeles(Marque $marque): Response {
+        return $this->render('home/showModele.html.twig', [
+            'modeles' => $marque->getModeles()
+        ]);
+    }
 }

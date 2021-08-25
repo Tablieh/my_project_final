@@ -188,9 +188,18 @@ margin-bottom: 50px;
     background: rgb(51,153,255);
     background: linear-gradient(90deg, rgba(51,153,255,1) 0%, rgba(107,106,136,1) 35%, rgba(51,153,255,1) 100%);
     color: cornsilk;    
-    position: absolute;
-    padding: 50px;
-    width:100%;
+    
+    padding: 1em;
+ 
+}
+.div-right{
+    text-align: right;
+    margin-right: 23%;
+}
+#marque>a{
+    font-size: large;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-bottom: 0px;
 }
 .uk-navbar-toggle{
     color: cornsilk;
@@ -206,9 +215,6 @@ footer>p{
     .mobile{
         display: block;
     }
-    #icon{
-        display: none;
-    }
     #burger{
         display: inline;
         padding: 0.5em;
@@ -216,11 +222,45 @@ footer>p{
     .uk-navbar-toggle{
         align-content: right;
     }
-
     .heading-color{
-    margin-left:0px;
+    display: none;
     }
+.div-right{
+    margin-right:5%;
+}
     .footer{
     text-align:justify;
     }
+    .cover{
+    margin-left:0px;
+    }
+    .zoom{
+    margin-left: 0px;
+    }
+    .link{
+    margin-left: 35px;
+    }
+    .image{
+    margin-left: 20px;
+    width: 250px;
+    }
+    .continer{
+    margin-left:0px;
+    display: flex;
+    flex-direction: column;
+    }
+    .form{
+    margin-left:13px;
+    }
+    .scrolling-wrapper{
+    margin-left:10px;
+    width: 260px;
+    }
+    
+        .uk-button{
+        padding:0.5rem;
+        line-height:1rem;
+        }
+    
+
 }

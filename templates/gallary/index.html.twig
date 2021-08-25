@@ -10,8 +10,12 @@
                 <thead>
                     <tr>
                         <th>Voitures</th>
-                        <th class="text">modele</th>
+                        <th class="text">Modele</th>
+                        <th class="text">Couleur </th>
+                        <th class="text">NprPort</th>
+                        {% if is_granted("ROLE_ADMIN") %}
                         <th class="text">Delete</th>
+                        {% endif %}
                     </tr>
                 </thead>
                 {% for voiture in voitures %}
@@ -21,9 +25,13 @@
                             <td class="text">
                                 <a href="{{ path("Voiture_show",{'id':voiture.id}) }}"> {{ voiture.modele }} </a>
                             </td>
+                            {% if is_granted("ROLE_ADMIN") %}
                             <td class="text">
 					            <a class="uk-icon-link" uk-icon="trash" href="{{ path('Voiture_del', {'id':voiture.id}) }}"> </a>
 				             </td>
+                            {% endif %}
+                            <td class="text">{{voiture.couleur }}</td>
+                            <td class="text">{{voiture.nbPortes}}</td>
                         </tr>
                     </tbody>
                 {% endfor %}

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<a class="link" href="{{ path('home') }}" > Retour </a>
+<h1 class="uk-text-center">Voila les information concern ce Modele</h1>
+         <div class="uk-container uk-container-small">
+        <table class="uk-table uk-table-hover-small">
+            <thead>
+                <tr>
+                    <td>Modele</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for modele in modeles %}
+                    <tr>
+                        <td>{{ modele.modele }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+
+{% endblock %}

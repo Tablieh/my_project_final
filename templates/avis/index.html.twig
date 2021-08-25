@@ -35,8 +35,9 @@
                 <th>Modele</th>
                 <th>text</th>
                 <th>modifier</th>
+                {% if is_granted("ROLE_ADMIN") %}
                 <th> Delete </th>
-                
+                 {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -47,9 +48,11 @@
 				    </td>
                     <td>{{ avi.text }}</td>
                     <td><a class="uk-button uk-button-primary "  href="{{ path('Avis_edit',{'id':avi.id}) }}">modifier</a></td>
-                    <td>
-					    <a class="uk-icon-link" uk-icon="trash" href="{{ path('avis_del', {'id':avi.id}) }}"> </a>
+                    {% if is_granted("ROLE_ADMIN") %}
+                    <td>      
+					    <a class="uk-icon-link" uk-icon="trash" href="{{ path('avis_del', {'id':avi.id}) }}"> </a> 
 				    </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
             
