@@ -8,9 +8,11 @@
             <h3 class="uk-text-center">Bienvenue Chez Notre Site !</h3>
         </div>
         <div id="info"><h4 class="heading-color">Des Voitures Disponable ~ </h4></div>
-        <div class="div-right" >
-            <button class="button"	id="marque" ><a class="a-button" href="{{path('Marque_add')}}">Ajouter Une Marque non disponable</a></button>
-        </div>
+        {% if app.user %}
+            <div class="div-right" >
+                <button class="button"	id="marque" ><a class="a-button" href="{{path('Marque_add')}}">Ajouter Une Marque non disponable</a></button>
+            </div>
+        {% endif %}
         <div class="uk-container uk-container-small">
         <table class="uk-table uk-table-hover">
             <thead>
@@ -22,7 +24,6 @@
         {% for Annonce in Annonces %}
             <tbody>
                 <tr>
-                
                     <td>
 					    <a href="{{ path("home_show",{'id':Annonce.id}) }}">{{Annonce.nom}}</a> 
 				    </td>
@@ -30,7 +31,6 @@
                 </tr>
             </tbody>
         {% endfor %}
-        
          </table>
         </div>
         
