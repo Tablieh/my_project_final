@@ -3,12 +3,17 @@
 {% block title %}Avis{% endblock %}
 
 {% block body %}
-    <img class="image" src="{{asset("image/home.jpg")}}" alt="img">
+    <figure id="banner">
+                    <img class="image-avis" src="{{asset("image/home1.png")}}" alt="img">
+                    <figcaption>
+                       <h1>Pour Ajouter Une Avis il faut click sur le bottons :) </h1>
+                        <a class="lien" class="button" href="{{path('Avis_add')}}">
+                            Ajouter Une Avis
+                        <i class="fas fa-angle-right"></i></a>
+                    </figcaption>
+                </figure> 
+
     <div class="continer" >
-        <div class="flex" >
-            <h3>Ajouter Une Avis</h3>
-            <button class="button"><a class="a-button" href="{{path('Avis_add')}}"> Ajouter Une Avis </a></button>
-        </div>
         <div class="scrolling-wrapper">
             <article class="box">
                 <table>
@@ -29,7 +34,7 @@
         </div>
     </div>
     <h2>Les avis sur des voitures</h2>
-    <table class="uk-table uk-table-hover">
+    <table class="uk-table uk-table-hover" class="tab">
         <thead>
             <tr>
                 <th>Modele</th>

@@ -57,6 +57,7 @@ class AvisController extends AbstractController
             $entityManager->persist($Avis);
             $entityManager->flush();
             //on redirige vers la liste des Avis (Marque_list etant le nom de la route)
+            $this->addFlash('success', 'the comment is well added !');
             return $this->redirectToRoute("avis_index");
 
         }
@@ -76,8 +77,9 @@ class AvisController extends AbstractController
 
         $entityManager->remove($avis);
         $entityManager->flush();
-
+        $this->addFlash('error', 'the comment is well deleted!');
         return $this->redirectToRoute('avis_index');
+
     }
 
     /**

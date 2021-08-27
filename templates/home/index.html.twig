@@ -5,33 +5,36 @@
 {% block body %}
     <br>
         <div >
-            <h3 class="uk-text-center">Bienvenue Chez Notre Site !</h3>
+            <h3 class="uk-text-center">Bienvenue Sur Notre Site !</h3>
         </div>
-        <div id="info"><h4 class="heading-color">Des Voitures Disponable ~ </h4></div>
+        <div id="info"><h4 class="heading-color">Liste des Voitures : </h4></div>
         {% if app.user %}
             <div class="div-right" >
-                <button class="button"	id="marque" ><a class="a-button" href="{{path('Marque_add')}}">Ajouter Une Marque non disponable</a></button>
+                <button class="button"	id="marque" ><a class="a-button" href="{{path('Marque_add')}}">Ajouter Une Marque non disponible</a></button>
             </div>
         {% endif %}
-        <div class="uk-container uk-container-small">
-        <table class="uk-table uk-table-hover">
-            <thead>
-                <tr>
-                    <th>Marque</th>
-                    <th>origine</th>
-                </tr>
-            </thead>
-        {% for Annonce in Annonces %}
-            <tbody>
-                <tr>
-                    <td>
-					    <a href="{{ path("home_show",{'id':Annonce.id}) }}">{{Annonce.nom}}</a> 
-				    </td>
-                    <td>{{ Annonce.origine }}</td>
-                </tr>
-            </tbody>
-        {% endfor %}
-         </table>
-        </div>
+
+                <div class="uk-container uk-container-small">
+                    <table class="uk-table uk-table-hover" class="table-color">
+                        <thead>
+                            <tr>
+                                <th>Marque</th>
+                                <th>origine</th>
+                            </tr>
+                        </thead>
+                    {% for Annonce in Annonces %}
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="{{ path("home_show",{'id':Annonce.id}) }}">{{Annonce.nom}}</a> 
+                                </td>
+                                <td>{{ Annonce.origine }}</td>
+                            </tr>
+                        </tbody>
+                    {% endfor %}
+                    </table>
+                </div>
+
+        
         
 {% endblock %}

@@ -15,6 +15,21 @@
                     <tr>
                         <td>{{ modele.modele }}</td>
                     </tr>
+                    <tr>
+                        {% for voiture in modele.voitures %}
+                            <td>
+                                <ul>
+                                {% for avis in voiture.avis %}
+                                    <li>
+                                        {{ avis.text }}
+                                    </li> 
+                                {% endfor %}
+                                </ul>
+                            </td>
+                            
+                            
+                        {% endfor %}
+                    </tr>
                 {% endfor %}
             </tbody>
             </table>

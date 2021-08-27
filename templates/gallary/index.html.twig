@@ -25,13 +25,13 @@
                             <td class="text">
                                 <a href="{{ path("Voiture_show",{'id':voiture.id}) }}"> {{ voiture.modele }} </a>
                             </td>
+                            <td class="text">{{voiture.couleur }}</td>
+                            <td class="text">{{voiture.nbPortes}}</td>
                             {% if is_granted("ROLE_ADMIN") %}
                             <td class="text">
 					            <a class="uk-icon-link" uk-icon="trash" href="{{ path('Voiture_del', {'id':voiture.id}) }}"> </a>
 				             </td>
                             {% endif %}
-                            <td class="text">{{voiture.couleur }}</td>
-                            <td class="text">{{voiture.nbPortes}}</td>
                         </tr>
                     </tbody>
                 {% endfor %}

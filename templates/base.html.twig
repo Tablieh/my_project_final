@@ -52,7 +52,15 @@
             
             </nav>
         </header>
-
+        {## read and display several types of flash messages #}
+            {% for label, messages in app.flashes(['success','warning','error']) %}
+                {% for message in messages %}
+                    <div class="uk-alert-{{ label }}" uk-alert>
+                        <a class="uk-alert-close" uk-close></a>
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
+            {% endfor %}
         <div id="sidenav" uk-offcanvas="flip: true" class="uk-offcanvas">
             <div class="uk-offcanvas-bar">
                 <ul class="uk-nav">

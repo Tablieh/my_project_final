@@ -45,7 +45,7 @@ class GallaryController extends AbstractController
 
         $entityManager->remove($Voiture);
         $entityManager->flush();
-
+        $this->addFlash('error', 'the car is well deleted !');
         return $this->redirectToRoute('gallary');
     }
 }

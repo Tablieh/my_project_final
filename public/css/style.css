@@ -1,17 +1,15 @@
 
 html{
 box-sizing:border-box;
-background-color: gainsboro
 }
-
 #info{
     margin-left: 100px;
     margin-bottom: 10px;
 }
 .heading-color{
-margin-left: 100px;
-   color: #0a0a0a;
-    font-size: large;
+   margin-left: 12em;
+    font-size: 1.3em;
+   color:slateblue;
     font-family: 'Lucida Sans';
 }
 .uk-text-center{
@@ -34,8 +32,7 @@ color: rgb(247, 246, 243);
 .form  {
     color: rgb(10, 10, 10);
    margin-left: 200px;
-    margin-top: 25px;
-    margin-bottom: 150px;
+    min-height: 80vh;
 }
 .link{
     margin-left: 175px;
@@ -59,10 +56,7 @@ label{
     margin-bottom: 25px;
     display: flex;
 }
-.flex{
-    margin:25px 25px 25px 50px;
-    flex-direction: column;
-}
+
 .image{
     margin-top: 15px;
     box-shadow: 0 0 0 5px #aac4f4;
@@ -173,33 +167,43 @@ th.text,.text{
     border: 1px solid transparent;
     border-radius: 30px;
     height: fit-content;
+    background-color: rgb(73, 74, 78);
 }
 .a-button {
     color:  #fff;
 }
 body{
 position: relative;
+min-height: 65vh;
+
 }
-.uk-container{
-margin-bottom: 50px;
+.uk-alert{
+    width: fit-content;
+    margin-left: 100px;
+    
 }
 .footer{
     text-align: center;
     background: rgb(51,153,255);
     background: linear-gradient(90deg, rgba(51,153,255,1) 0%, rgba(107,106,136,1) 35%, rgba(51,153,255,1) 100%);
     color: cornsilk;    
-    
+    bottom: 0;
     padding: 1em;
- 
 }
 .div-right{
     text-align: right;
-    margin-right: 23%;
+    margin-right: 22%;
 }
 #marque>a{
     font-size: large;
     font-family:Arial, Helvetica, sans-serif;
     margin-bottom: 0px;
+}
+.uk-table th{
+    background-color: rgb(163, 181, 231)
+}
+.uk-table td{
+    background-color: gainsboro
 }
 .uk-navbar-toggle{
     color: cornsilk;
@@ -209,6 +213,65 @@ footer>p{
 }
 #burger{
     display: none;
+}
+#connexion{
+    color: darkcyan;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2em;
+}
+#register{
+    color: darkcyan;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2em;
+}
+
+.uk-container-small{
+min-height: 65vh;
+    width: 900px;
+
+}
+.image-avis{
+    margin-left: 152px;
+    opacity: 0.8;
+    object-fit: cover;
+    width: 1280px;
+    height: 397px;
+}
+#banner{
+    position: relative;
+    margin: 0;
+    height: 250px;
+    overflow: hidden;
+}
+
+#banner figcaption{
+    margin-left: 152px;
+    width: 1263px;
+    background-color: rgba(24, 32, 24, 0.5);
+    color: #fff;
+    padding: 0.5em;
+    position: absolute;
+    bottom: 0;
+    justify-content: space-between;
+}
+figcaption h1{
+    font-size: 15px;
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+}
+.lien{
+    text-decoration: none;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    float: right;
+    background-color: #2d3033;
+    color: #fff;
+    margin: 0;
+
+}
+.uk-table{
+    width: 80%;
 }
 /* pour les ecran jusqua une largeur de 800px */
 @media screen and (max-width:800px){

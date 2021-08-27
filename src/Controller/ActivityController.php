@@ -60,6 +60,7 @@ class ActivityController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($Marque);
             $entityManager->flush();
+            $this->addFlash('success', 'the marque is well added !');
             //on redirige vers la liste des Marque (Marque_list etant le nom de la route)
             return $this->redirectToRoute("activity_index");
 
@@ -101,6 +102,7 @@ class ActivityController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($Modele);
             $entityManager->flush();
+            $this->addFlash('success', 'the modele is well added !');
             //on redirige vers la liste des Modele (Modele_list etant le nom de la route)
             return $this->redirectToRoute("activity_index");
 
@@ -141,6 +143,7 @@ class ActivityController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($Voiture);
             $entityManager->flush();
+            $this->addFlash('success', 'the car is well added !');
             //on redirige vers la liste des Voiture (Voiture_list etant le nom de la route)
             return $this->redirectToRoute("gallary");
 
