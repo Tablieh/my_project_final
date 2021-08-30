@@ -6,12 +6,12 @@
 <br>
         <div id="info"><h4 class="heading-color">Des Voitures valable ~ </h4></div>
         <div class="uk-container uk-container-small">
-            <table class="uk-table uk-table-hover">
+            <table class="uk-table uk-table-hover" id="shows">
                 <thead>
                     <tr>
                         <th>Voitures</th>
                         <th class="text">Modele</th>
-                        <th class="text">Couleur </th>
+                        <th class="text" id="mobile-dispnon">Couleur </th>
                         <th class="text">NprPort</th>
                         {% if is_granted("ROLE_ADMIN") %}
                         <th class="text">Delete</th>
@@ -25,7 +25,7 @@
                             <td class="text">
                                 <a href="{{ path("Voiture_show",{'id':voiture.id}) }}"> {{ voiture.modele }} </a>
                             </td>
-                            <td class="text">{{voiture.couleur }}</td>
+                            <td class="text" id="mobile-displnon">{{voiture.couleur }}</td>
                             <td class="text">{{voiture.nbPortes}}</td>
                             {% if is_granted("ROLE_ADMIN") %}
                             <td class="text">
