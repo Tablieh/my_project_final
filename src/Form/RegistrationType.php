@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class RegistrationType extends AbstractType
 {
@@ -29,8 +30,7 @@ class RegistrationType extends AbstractType
                 "expanded" => true,
                 "mapped" => false,
                 "choices" => [
-                    "user" => "ROLE_USER",
-                    "administrateur" => "ROLE_ADMIN"
+                    "user" => "ROLE_USER"
                 ]
             ])
             ->add('password', PasswordType::class, [
@@ -50,7 +50,23 @@ class RegistrationType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('createdAt', DateType::class)
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'invalid_message' => 'The password fields must match.',
+                'options' => ['attr' => ['class' => 'password-field']],
+                'required' => true,
+                'first_options'  => ['label' => 'Password'],
+                'second_options' => ['label' => 'Repeat Password'],
+            ])
+            ->add('createdAt', DateType::class, array(
+                'input' => 'datetime',
+                'widget' => 'single_text',
+                'html5' => false,
+                
+                'data' => new \DateTime("now"),
+                )
+                )
+
 
             ->add('agreeTerms', CheckboxType::class, [
                                         'mapped' => false,

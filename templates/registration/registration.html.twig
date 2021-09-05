@@ -16,11 +16,17 @@
 	<br>
     {{ form_row(RegistrationType.roles) }}
 	<br>
-	{{ form_row(RegistrationType.password, {
+	{{ form_row(RegistrationType.password.first, {
             label: 'password'
         }) }}
 	<br>
+	{{ form_row(RegistrationType.password.second, {
+            label: 'repeat password'
+        }) }}
+	<br>
+	<div style="display:none">
 	{{ form_row(RegistrationType.createdAt) }}
+	</div>
     {{ form_row(RegistrationType.agreeTerms) }}
 
 	
