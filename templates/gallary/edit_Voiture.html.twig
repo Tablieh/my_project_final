@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="form" >
+        <a class="ret" href="{{ path('gallary') }}" > Retour </a>
+
+        {% if editMode %}
+            <h1>Modification d'un modele <h1>
+        {% endif %}
+    
+            {{ form(VoitureType) }}
+    </div>
+{% endblock %}

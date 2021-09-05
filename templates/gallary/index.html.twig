@@ -14,6 +14,7 @@
                         <th class="text" id="mobile-dispnon">Couleur </th>
                         <th class="text">NprPort</th>
                         {% if is_granted("ROLE_ADMIN") %}
+                        <th class="text">modifier</th>
                         <th class="text">Delete</th>
                         {% endif %}
                     </tr>
@@ -28,6 +29,7 @@
                             <td class="text" id="mobile-displnon">{{voiture.couleur }}</td>
                             <td class="text">{{voiture.nbPortes}}</td>
                             {% if is_granted("ROLE_ADMIN") %}
+                            <td><a   href="{{ path('Voiture_edit',{'id':voiture.id}) }}">modifier</a></td>
                             <td class="text">
 					            <a class="uk-icon-link" uk-icon="trash" href="{{ path('Voiture_del', {'id':voiture.id}) }}"> </a>
 				             </td>
