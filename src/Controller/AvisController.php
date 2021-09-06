@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Avis;
+use App\Entity\Modele;
 use App\Form\AvisType;
 use Doctrine\ORM\Mapping\Id;
 use App\Repository\AvisRepository;
@@ -92,22 +93,18 @@ class AvisController extends AbstractController
         ]);
     }
 
+
     /**
-     * @Route("/avis/{id}", name="avis_tout")
+     * @Route("/avis/{id}", name="avis_modele")
      */
-    public function AvisParModele(int $id, AvisRepository $avisRepository, Avis $results): Response
+    public function avisParModele(Modele $modele, AvisRepository $repo)
     {
-        $res = $avisRepository
-            ->find($id);
-
-        $repository = $this->getDoctrine()->getRepository(Avis::class);
-
-            // look for multiple Product objects matching the modele
-            $res = $repository->findBy(
-                ['modele' => $res]
-            );
-        return $this->render('avis/showAvis.html.twig', [
-        'results' => $results
-    ]);
+        $results = $repo->findBy(
+           [ "modele" => $modele ]
+        );
+ 
+        return $this->render("avis/showAvis.html.twig", [
+            'results' => $results
+        ]);
     }
 }

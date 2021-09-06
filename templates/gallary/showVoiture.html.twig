@@ -21,9 +21,25 @@
                         
                         <p class="justify"><strong>Motorisation : </strong> {{resultat.motorisation}}</p>
                     </div>
-                    
-                    
 
+                    <table class="uk-table uk-table-hover-small" id="show">
+                        <thead>
+                            <tr>
+                                <th>Avis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td>
+                                <ul>
+                                {% for res in resultat.avis %}
+                                    <li>
+                                        {{ res.text }}
+                                    </li> 
+                                {% endfor %}
+                                </ul>
+                            </td> 
+                        </tbody>
+                        </table>
         </div>
         <footer class="footer">
             <p >&copy; 2021 -Tablieh~tm Broduction !!</p>
