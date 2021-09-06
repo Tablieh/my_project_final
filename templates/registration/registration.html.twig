@@ -14,8 +14,8 @@
 	{{ form_start(RegistrationType) }}
 	{{ form_row(RegistrationType.email) }}
 	<br>
-    {{ form_row(RegistrationType.roles) }}
-	<br>
+
+
 	{{ form_row(RegistrationType.password.first, {
             label: 'password'
         }) }}
@@ -27,7 +27,9 @@
 	<div style="display:none">
 	{{ form_row(RegistrationType.createdAt) }}
 	</div>
-    {{ form_row(RegistrationType.agreeTerms) }}
+	<div id="roles">
+    	{{ form_row(RegistrationType.roles) }}{{ form_row(RegistrationType.agreeTerms) }}
+    </div>
 
 	
 	
@@ -35,4 +37,7 @@
 	<button class="uk-button uk-button-primary" type="submit" class="btn">Registration</button>
 	{{ form_end(RegistrationType) }}
 	</div>
+	<footer class="footer">
+            <p >&copy; 2021 -Tablieh~tm Broduction !!</p>
+        </footer>
 {% endblock %}

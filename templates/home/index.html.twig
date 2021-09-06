@@ -7,7 +7,7 @@
         <div >
             <h3 class="uk-text-center">Bienvenue Sur Notre Site !</h3>
         </div>
-        <div id="info"><h4 class="heading-color">Liste des Voitures : </h4></div>
+        <div id="info"><h4 class="heading-color">Choisi une marque : </h4></div>
         {% if app.user %}
             <div class="div-right" >
                 <button class="button"	id="marque" ><a class="a-button" href="{{path('Marque_add')}}">Ajouter Une Marque non disponible</a></button>
@@ -36,6 +36,8 @@
                     </table>
                 </div>
 
-        
+        <footer class="footer">
+            <p >&copy; 2021 -Tablieh~tm Broduction !!</p>
+        </footer>
         
 {% endblock %}
