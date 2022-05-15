@@ -2,6 +2,86 @@
 html{
 box-sizing:border-box;
 }
+.welcome{
+margin-right: 360px;
+font-size: 2rem;
+text-align: center;
+color: rgb(68, 17, 134);
+}
+.mod-v{
+    color: indigo;
+    font-size: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 0px;
+    margin-top: 15px;
+}
+div#voiture .uk-h1, h1{
+    margin-top: 10px;
+}
+#modele_marque.uk-select{
+    width: 10%;
+}
+#voiture_description.uk-textarea.uk-form-small{
+width: 16%;
+}
+
+#voiture_image.uk-textarea.uk-form-small{
+width: 19%;
+}
+#voiture_type{
+width: 19.5%;
+}
+#voiture_nbPortes{
+width: 6%;
+}
+#voiture_couleur{
+width: 7%;
+}
+#voiture_modele{
+width: 10%;
+}
+#avis_text.uk-textarea.uk-form-small{
+width: 18%;
+}
+#avis_note{
+width: 3%;
+}
+#avis_dateAvis{
+width: 6%;
+}
+#avis_voiture{
+width: 7%;
+}
+img.logo{
+    width: 25%;
+    display: flex;
+ border-radius: 30px;
+}
+.lg-cov{
+    margin-left: 170px;
+    margin-right: 155px;
+    margin-bottom:0px;
+}
+div.cover{
+    margin-bottom:0px;
+    margin-left:0px;
+}
+.cover{
+    justify-content: left;
+}
+.lienRapid>ul{
+    margin-bottom: 0px;
+}
+.lienRapid{
+    text-align: right;
+    margin-right: 10px;
+}
+.lienRapid>a{
+    font-size: large;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-bottom: 0px;
+    color:  rgb(38, 26, 211);
+}
 #roles{
     display: flex;
 }
@@ -27,6 +107,7 @@ box-sizing:border-box;
     color:  rgb(63, 103, 143);
 }
 .navbar-blue{
+
    background: rgb(51,153,255);
    background: linear-gradient(90deg, rgba(51,153,255,1) 0%, rgba(107,106,136,1) 35%, rgba(51,153,255,1) 100%);
 }
@@ -68,8 +149,8 @@ label{
     box-shadow: 0 0 0 5px #aac4f4;
     border-radius: 30px;
     margin-left: 190px;
-    width: 50%;
-    height: 50%;
+    width: 40%;
+    height: 40%;
 }
 #avis_text{
     width: 30%;
@@ -154,7 +235,6 @@ th.text,.text{
     border: 1px solid transparent;
     border-radius: 30px;
     height: fit-content;
-
 }
 .a-button {
     color:  #fff;
@@ -181,13 +261,61 @@ min-height: 65vh;
 
 }
 .div-right{
-    text-align: right;
-    margin-right: 22%;
+    text-align: left;
+    margin-left: 9.5%;
 }
-#marque>a{
-    font-size: large;
-    font-family:Arial, Helvetica, sans-serif;
+.form-add{
+    font-size: 15px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.add{
+    color: indigo;
+    font-size: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+button#temp-lien>a{
+    font-size: 16px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin-bottom: 0px;
+    color: rgb(1, 67, 247);
+    
+}
+button#temp-lien{
+    margin-right: 178px;
+    border-radius: 40px;
+    border: 1px solid transparent;
+    background-color: rgb(255, 255, 255);
+    
+}
+.div-table-home{
+    min-height: 65vh;
+    width: 900px;
+    margin-left: 150px;
+}
+.table-home{
+    width: 80%;
+}
+.table-home th{
+    border-style: solid;
+    border-color: rgb(136, 127, 136);
+    color: rgb(191, 163, 211);
+    background: rgb(51,153,255);
+    background: linear-gradient(90deg, rgb(123, 137, 146) 0%, rgb(106, 106, 136) 35%, rgb(97, 107, 196) 100%);
+    
+    padding: 16px 12px;
+    vertical-align: top;
+}
+
+.table-home td>a{
+    color: rgb(77, 25, 160);
+}
+.table-home td{
+    background-color: gainsboro;
+    border-style: solid;
+    border-color: rgb(136, 127, 136);
+    color: rgb(10, 10, 10);
+    padding: 16px 12px;
+    vertical-align: top;
 }
 .uk-table th{
     background-color: rgb(163, 181, 231)
@@ -249,9 +377,6 @@ figcaption h1{
     position: absolute;
     bottom: 0;
     color: #fff;
-}
-#marque{
-    margin-right: 170px;
 }
 .lien{
     text-decoration: none;

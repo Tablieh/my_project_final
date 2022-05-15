@@ -4,22 +4,19 @@
 
 {% block body %}
     <br>
-        <div >
-            <h3 class="uk-text-center">Bienvenue Sur Notre Site !</h3>
-        </div>
-        <div id="info"><h4 class="heading-color">Choisi une marque : </h4></div>
+        
         {% if app.user %}
             <div class="div-right" >
-                <button class="button"	id="marque" ><a class="a-button" href="{{path('Marque_add')}}">Ajouter Une Marque non disponible</a></button>
+                <button id="temp-lien" ><a href="{{path('Marque_add')}}"> -> Ajouter Une Marque non disponible</a></button>
             </div>
             
         {% endif %}
 
-                <div class="uk-container uk-container-small">
-                    <table class="uk-table uk-table-hover" id="table-color">
+                <div class="div-table-home">
+                    <table class="table-home" id="table-color">
                         <thead>
                             <tr>
-                                <th>Marque</th>
+                                <th class="heading-color">Choisi une marque : </th>
                                 <th>origine</th>
                             </tr>
                         </thead>

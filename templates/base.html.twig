@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+       
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,18 +18,32 @@
         {% endblock %}
     </head>
     <body>
-        
+        <div class="lg-cov">
+            <div class="lienRapid">
+                    <ul>
+                            <a href="#" uk-icon="icon: facebook"></a>
+                            <a href="#" uk-icon="icon: youtube"></a>
+                            <a href="#" uk-icon="icon: twitter"></a>
+                            <a href="#" uk-icon="icon: instagram"></a>
+                    </ul>
+            </div>
+        </div>
         <header>
             <!-- Main Navbar -->
-            <nav class="uk-container uk-navbar navbar-blue">
             
-                <div class="uk-navbar-left">
+            <nav class="uk-container uk-navbar navbar-blue">
                 
+                <div class="uk-navbar-left">
+                    
                     <ul class="uk-navbar-nav">
                         <li class="uk-active">
-                            <a href="#">RATE<strong>MyCar</strong></a>
-                        </li> 
+                            <div class="cover" class="uk-navbar-nav" >
+                                <img class="logo" src="{{asset("image/logo.png")}}" alt="logo">
+                            </div>
+                                
+                        </li>
                     </ul>
+                    
                 </div>
                 <div class="uk-navbar-right">
                     <ul class="uk-navbar-nav uk-visible@s">
@@ -49,9 +64,11 @@
                     </ul>
                     <a href="#" class="uk-navbar-toggle uk-hidden@s" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>
                 </div>
-            
+                
             </nav>
+            
         </header>
+        
         {## read and display several types of flash messages #}
             {% for label, messages in app.flashes(['success','warning','error']) %}
                 {% for message in messages %}

@@ -3,15 +3,15 @@
 {% block body %}
 
     <div class="form" >
-        <a class="lien" href="{{ path('activity_index') }}" > Retour </a>
+        <a class="ret" href="{{ path('activity_index') }}" > Retour </a>
 
         {% if editMode %}
-            <h1>Modification d'un Voiture <h1>
+            <h1 class="add">Modification d'un Voiture <h1>
         {% else %}
-            <h1 >Ajout d'un Voiture</h1>
+            <h1 class="add">Ajout d'un Voiture</h1>
         {% endif %}
     
-            {{ form(VoitureType) }}
+            <div class="form-add">{{ form(VoitureType) }}</div>
     </div>
     <footer class="footer">
             <p >&copy; 2021 -Tablieh~tm Broduction !!</p>

@@ -22,9 +22,14 @@ class AvisType extends AbstractType
                     "class" => "uk-textarea uk-form-small",
                 ]])
             ->add('note')
-            ->add('dateAvis', DateType::class, ['attr' => [
-                    "class" => "uk-date uk-form-small",
-                ]])
+             ->add('dateAvis', DateType::class, array(
+                'input' => 'datetime',
+                'widget' => 'single_text',
+                'html5' => false,
+                
+                'data' => new \DateTime("now"),
+                )
+                )
             ->add('voiture')
 
             ->add('user',EntityType::class,[

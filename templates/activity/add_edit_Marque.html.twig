@@ -6,12 +6,12 @@
         <a class="ret" href="{{ path('activity_index') }}" > Retour </a>
 
         {% if editMode %}
-            <h1>Modification d'un Marque <h1>
+            <h1 class="add">Modification d'un Marque :<h1>
         {% else %}
-            <h1 >Ajout d'un Marque</h1>
+            <h1 class="add">Ajout d'un Marque :</h1>
         {% endif %}
-    
-            {{ form(MarqueType) }}
+            <div class="form-add">{{ form(MarqueType) }}</div>
+            
     </div>
     <footer class="footer">
             <p >&copy; 2021 -Tablieh~tm Broduction !!</p>
